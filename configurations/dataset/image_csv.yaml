@@ -1,0 +1,18 @@
+defaults:
+  - video_base
+  - _self_
+
+data_root: data/test_images
+metadata_path: metadata.csv
+
+test_percentage: 1.0
+load_prompt_embed: false
+
+filtering:
+  disable: true
+
+augmentation:
+  is_augment: false
+  random_flip: null
+  ratio: [1.0, 1.0]
+  scale: [1.0, 1.0]

@@ -1,0 +1,43 @@
+defaults:
+  - base_pytorch
+  - _self_
+  
+tasks: [training]
+
+training:
+  lr: 8e-6
+  precision: bf16-mixed
+  batch_size: 2
+  max_epochs: -1
+  max_steps: 10000000
+  checkpointing:
+    every_n_train_steps: null
+    every_n_epochs: 1
+    save_weights_only: true
+    filename: "robot-wan-{epoch:02d}-{step}" # Keep checkpoint names unique across epochs.
+    save_top_k: -1
+    monitor: null
+
+  optim:
+    accumulate_grad_batches: 4
+    gradient_clip_val: 1.0    
+    gradient_clip_algorithm: "value" # value Required for FSDP, and norm is for deepspeed, ddp. 
+    num_workers: 16 # number of CPU threads for data preprocessing.
+
+validation:
+  precision: bf16-mixed
+  val_every_n_step: null
+  val_every_n_epoch: 1
+  batch_size: 1
+  limit_batch: 1
+  data:
+    num_workers: 1 # number of CPU threads for data preprocessing, for validation.
+
+test:
+  precision: bf16-mixed
+  limit_batch: null
+  batch_size: 1
+  data:
+    num_workers: 1 # number of CPU threads for data preprocessing, for test.
+
+find_unused_parameters: False

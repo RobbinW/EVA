@@ -1,0 +1,3 @@
+debug: ${debug} # inherited from configurations/config.yaml
+num_nodes: 1 # number of nodes for slurm distributed launch. ignore this if you don't specify `cluster=xxx`
+tasks: [main] # tasks to run sequantially, such as [training, test], useful when your project has multiple stages and you want to run only a openx of them.

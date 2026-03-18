@@ -1,0 +1,5 @@
+image_path,height,width,fps,n_frames,caption
+click_alarmclock.png,480,640,16,1,"Click the center button on the square plastic alarm clock's top side."
+click_bell.png,480,640,16,1,"Direct the right arm to click the top of the simple hand bell with black stand."
+place_container_plate.png,480,640,16,1,"Move the container with the medium green cup with smooth sides to the medium round ceramic plate."
+place_a2b_right.png,480,640,16,1,"Use the right arm to set the plastic mouse right of the box with cards inside."

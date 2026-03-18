@@ -1,0 +1,30 @@
+defaults:
+  - base_pytorch
+  - _self_
+
+tasks: [validation]
+num_nodes: 1
+strategy: auto
+
+training:
+  compile: false
+
+validation:
+  precision: bf16-mixed
+  compile: false
+  inference_mode: true
+  batch_size: 1
+  limit_batch: null
+  data:
+    num_workers: 1
+    shuffle: false
+
+test:
+  precision: bf16-mixed
+  compile: false
+  inference_mode: true
+  batch_size: 1
+  limit_batch: null
+  data:
+    num_workers: 1
+    shuffle: false

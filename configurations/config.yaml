@@ -1,0 +1,17 @@
+# configuration parsing starts here
+defaults:
+  - experiment: exp_inference
+  - dataset: image_csv
+  - algorithm: wan_i2v
+  - _self_
+
+debug: false
+
+wandb:
+  entity: null
+  project: EVA
+  mode: disabled
+  log_model: false
+
+resume: null
+load: null

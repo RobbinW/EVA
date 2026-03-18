@@ -1,0 +1,3 @@
+defaults:
+  - image_csv
+  - _self_

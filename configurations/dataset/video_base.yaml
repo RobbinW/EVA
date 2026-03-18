@@ -1,0 +1,32 @@
+debug: ${debug}
+data_root: ??? # dataset folder location e.g. ~/data/something_something_v2
+metadata_path: ??? # a csv / json file that lists the entries for the dataset, should be a file path relative to data_root.
+auto_download: false # whether to automatically download the dataset if the data_root does not exist, proceed with caution
+force_download: false # whether to force download the dataset even if the data_root already exists, bypassing every check
+test_percentage: 0.01 # percentage of the dataset to use for testing vs training. However, if a field `split` is present in the metadata, that will be used instead
+height: 480 # target height for the output videos
+width: 640 # target width for the output videos
+n_frames: 49 # target number of frames for the output videos
+fps: 16 # target fps for the output videos
+id_token: null # if not null, tokenize to an id token for this dataset
+load_video_latent: false # whether to load a raw latent tensor instead of mp4 file. Require a field `image_latent_path` in csv
+load_prompt_embed: false # whether to load a raw embed tensor instead of running language model online. Require a field `prompt_embed_path` in csv
+check_video_path: false # whether to check if the video_path in the metadata is valid
+trim_mode: speedup # one of ["speedup", "random_cut"], specify how do we handle a video that's too long
+pad_mode: slowdown # one of ["slowdown", "pad_last", "discard"], specify how do we handle a video that's too short
+max_text_tokens: ${algorithm.max_text_tokens} # maximum number of tokens for the text encoder
+
+filtering: # filter raw videos based on these criteria
+  disable: false # whether to disable filtering
+  height: [0, 4096] # height range for the videos
+  width: [0, 4096] # width range for the videos
+  fps: [0, 120] # fps range for the videos
+  n_frames: [0, 4096] # number of frames range for the videos
+
+augmentation:
+  random_flip: null  # probability of random flip, null means no random flip
+  ratio: [0.98, 1.02] # random scaling of the aspect ratio, see torchvision.transforms.v2.RandomResizedCrop
+  scale: [0.8, 1.0] # random crop the video, see torchvision.transforms.v2.RandomResizedCrop
+
+image_to_video: true # whether returning the first image too for I2V model
+# video_reshape_mode: center
