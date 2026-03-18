@@ -59,7 +59,7 @@ huggingface-cli download Wan-AI/Wan2.1-I2V-14B-480P \
   --local-dir ./data/ckpts/Wan2.1-I2V-14B-480P
 ```
 
-The downloaded directory should contain the Wan diffusion model, VAE, text encoder, and CLIP encoder used by EVA inference.
+The downloaded directory should contain the Wan diffusion model, VAE, text encoder, and CLIP encoder.
 
 ## Environment Setup
 
@@ -71,8 +71,6 @@ conda activate eva
 ```
 
 ### Install Dependencies
-
-We store python dependencies in `requirements.txt`.
 
 ```bash
 # Install dependencies
