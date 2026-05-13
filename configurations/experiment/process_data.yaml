@@ -1,0 +1,9 @@
+defaults:
+  - base_experiment
+  - _self_
+
+tasks: [cache_prompt_embed]
+new_data_root: null
+
+cache_prompt_embed:
+  batch_size: 16

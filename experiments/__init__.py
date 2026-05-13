@@ -4,12 +4,18 @@ import pathlib
 from lightning.pytorch.loggers.wandb import WandbLogger
 
 from .exp_base import BaseExperiment
+from .exp_flow_grpo import FlowGRPOExperiment
+from .exp_idm import IDMTrainingExperiment
+from .process_data import ProcessDataExperiment
 from .exp_video import VideoPredictionExperiment
 
 # each key has to be a yaml file under '[project_root]/configurations/experiment' without .yaml suffix
 exp_registry = dict(
     exp_video=VideoPredictionExperiment,
     exp_inference=VideoPredictionExperiment,
+    exp_flow_grpo=FlowGRPOExperiment,
+    exp_idm=IDMTrainingExperiment,
+    process_data=ProcessDataExperiment,
 )
 
 

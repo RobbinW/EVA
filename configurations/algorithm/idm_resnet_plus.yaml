@@ -1,0 +1,8 @@
+defaults:
+  - base_algo
+  - _self_
+
+model_name: resnet_plus
+backbone_type: resnet50
+output_dim: 14
+num_frames: 3

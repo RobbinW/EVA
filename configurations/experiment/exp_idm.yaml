@@ -1,0 +1,27 @@
+# @package experiment
+_name: exp_idm
+
+defaults:
+  - base_experiment
+  - _self_
+
+tasks: [training]
+
+training:
+  seed: 1234
+  lr: 3e-4
+  scheduler: cosine
+  warmup_ratio: 0.05
+  warmup_steps: null
+  min_lr_ratio: 0.0
+  batch_size: 32
+  eval_batch_size: 32
+  num_iterations: 200000
+  eval_interval: 5000
+  log_interval: 10
+  num_workers: 8
+  prefetch_factor: 4
+  mixed_precision: bf16
+  use_normalization: true
+  load_from: null
+  eval_only: false

@@ -1,0 +1,18 @@
+debug: ${debug}
+data_root: $WORKSPACE/RoboTwin/data
+task_config: demo_clean_vidar
+ratio_eval: 0.05
+
+action_key: joint_action/vector
+rgb_key: observation/head_camera/rgb
+
+num_frames: ${algorithm.num_frames}
+frame_stride: 2
+dino_size: 512
+
+use_transform: true
+do_flip: true
+
+resize_to_target_size: true
+image_width: 640
+image_height: 480

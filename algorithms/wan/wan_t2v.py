@@ -244,6 +244,10 @@ class WanTextToVideo(BasePytorchAlgo):
                     bias="none",
                 )
                 self.model = get_peft_model(self.model, lora_config)
+                # PEFT creates LoRA weights in fp32 by default. FSDP auto-wrap later
+                # flattens parameters within each wrapped unit, which requires a uniform
+                # dtype. Keep the injected adapters aligned with the bf16 base model.
+                self.model.to(torch.bfloat16)
                 self.model.print_trainable_parameters()
             else:
                 # Ensure parameters require gradients (assign=True in load_state_dict may freeze them)

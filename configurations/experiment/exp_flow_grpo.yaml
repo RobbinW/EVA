@@ -1,0 +1,68 @@
+# @package experiment
+_name: exp_flow_grpo
+
+defaults:
+  - base_pytorch
+  - _self_
+
+tasks: [training]
+
+training:
+  lr: 2e-4
+  batch_size: 1
+  num_epochs: 100
+  precision: bf16
+  strategy: fsdp
+  seed: 42
+  reward_model_path: null
+  idm_num_frames: 3
+
+  data:
+    num_workers: 4
+
+  optim:
+    gradient_clip_val: 1.0
+
+  sample:
+    train_batch_size: 1
+    sample_batch_size: 1
+    num_image_per_prompt: 8
+    eval_batch_size: 1
+    guidance_scale: 5.0
+    num_batches_per_epoch: 4
+    num_steps: 40
+    global_std: false
+    kl_reward: 0.0
+
+  train:
+    ema: true
+    ema_decay: 0.9
+    ema_interval: 8
+    cfg: false
+    num_inner_epochs: 4
+    gradient_accumulation_steps: 4
+    timestep_fraction: 0.99
+    adv_clip_max: 5.0
+    clip_range: 1e-3
+    beta: 0.004
+    max_grad_norm: 1.0
+
+  per_prompt_stat_tracking: true
+
+  reward:
+    num_workers: 4
+
+  eval_every_n_epochs: 10
+  eval_num_batches: 1
+  eval_num_videos: 4
+  eval_fps: 16
+  save_every_n_epochs: 5
+
+reward:
+  idm_smoothness: true
+
+validation:
+  batch_size: 1
+
+test:
+  batch_size: 1
